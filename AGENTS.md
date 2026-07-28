@@ -61,6 +61,9 @@ This repository contains the EUVICS Proposal and Conceptual Design Report. Treat
 4. Compile the affected document and inspect warnings.
 5. Check citations, references, units, terminology, and cross-document consistency.
 6. Summarize changed files, verification performed, and remaining `TBD`s.
+7. After completing a milestone execution, save its completed execution plan under
+   `docs/exec-plans/completed/`. Use a sequential zero-padded numeric prefix and a
+   concise description, for example `0001-milestone-01-repository-architecture.md`.
 
 ## Review boundaries
 
@@ -78,4 +81,3 @@ This repository contains the EUVICS Proposal and Conceptual Design Report. Treat
 - LaTeX builds without new errors or unresolved references.
 - Generated artifacts are reproducible and not hand-edited.
 - Open questions and review needs remain visible.
-
