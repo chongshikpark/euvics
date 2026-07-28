@@ -2,15 +2,33 @@
 
 \subsection{Physics of Inverse Compton Scattering}
 
-Inverse Compton Scattering (ICS) involves the interaction between high-energy electrons and photons, resulting in the photons being scattered to higher energies. This process is central to generating Extreme Ultraviolet (EUV) light for various applications. The relativistic electrons transfer energy to lower-energy photons, boosting them to the EUV range, which is crucial for advanced lithography and other technologies.
+Inverse Compton scattering (ICS) describes photon scattering from relativistic
+electrons. In the laboratory frame, the scattered energy and angular distribution
+depend on electron energy, incident-photon energy, collision and observation
+geometry, polarization, and recoil assumptions~\cite{SunWu2011ComptonSource}.
+For intense pulsed fields, nonlinear motion and pulse geometry can modify the
+spectrum; relevant treatments include general nonlinear Thomson geometries and
+ponderomotive broadening~\cite{KrafftEtAl2005NonlinearThomson,HartemannWu2013Brightness}.
+The EUVICS calculation must state which regime and conventions it uses rather
+than combining results from these models without matched assumptions.
 
 \subsection{Accelerator System}
 
-The accelerator system is designed to produce a high-quality electron beam required for efficient ICS. It includes components such as the electron injector, superconducting RF linac, and beam transport system, which collectively ensure the generation and delivery of a stable, high-energy electron beam.
+The candidate system boundary includes an electron source, injector, energy-setting
+system, transport, focusing, steering, diagnostics, and dump. The specific
+technology, beam parameters, interfaces, and verification criteria remain TBD.
+Published SRF photoinjector reviews and experiments provide evidence about other
+machines, not EUVICS performance~\cite{ArnoldTeichert2011SRFPhotoinjectors,PetrushinaEtAl2020SRFGun}.
 
 \subsection{Laser System}
 
-The laser system provides the initial photons that interact with the electron beam in the ICS process. This system needs to deliver high-power, high-frequency laser pulses with precise timing and synchronization to achieve the desired EUV light production.
+The candidate laser boundary includes pulse generation, transport, focusing,
+polarization control, synchronization, diagnostics, and the interaction-region
+interface. Wavelength, pulse energy, duration, waist, bandwidth, polarization,
+timing, and stability values remain TBD except for the roadmap's 800~nm nominal
+assumed input. Laser-to-RF synchronization and time-stamping methods are reviewed
+in the ultrafast-electron literature~\cite{FilippettoEtAl2022UED}; EUVICS-specific
+tolerances require an approved overlap and performance budget.
 
 \blankline
 \blankline
