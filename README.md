@@ -40,6 +40,14 @@ The original working copies remain in `papers/` during Milestone 1 to avoid dele
 - `reviews/`: review checklists and cross-document decisions.
 - `archive/`: immutable imported material and checksums.
 
+## Candidate scope and requirements baseline
+
+Milestone 2 defines candidate baseline revision `M2-candidate-20260728` in
+`docs/document_scope.md`, `shared/`, `tables/`, and `reviews/open_decisions.md`.
+It freezes reporting conventions and stable candidate requirement identifiers,
+but it does not approve numerical requirements. Values and statuses marked
+`approval pending` or `TBD` require the owners identified in those files.
+
 All scientific, citation, generated-result, and review rules in `AGENTS.md` apply. Missing facts remain explicit `TBD`s with an owner or question; they must not be filled speculatively.
 
 ## Known build warnings

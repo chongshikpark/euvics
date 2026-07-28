@@ -1,2 +1,36 @@
-% Shared symbols only. Width, angle, and energy conventions require review in M2.
+% Audience-neutral symbols and frozen reporting conventions for M2.
 \newcommand{\angstrom}{\text{\normalfont\AA}}
+\newcommand{\electronKineticEnergy}{\ensuremath{K_{e}}}
+\newcommand{\electronTotalEnergy}{\ensuremath{E_{e}}}
+\newcommand{\electronRestEnergy}{\ensuremath{m_{e}c^{2}}}
+\newcommand{\collisionAngle}{\ensuremath{\alpha}}
+\newcommand{\observationAngle}{\ensuremath{\theta}}
+\newcommand{\laserWaist}{\ensuremath{w_{0}}}
+\newcommand{\rmsWidth}{\ensuremath{\sigma}}
+
+% Electron energy: K_e is kinetic energy and E_e = K_e + m_e c^2 is total
+% energy. Never use an unlabeled ``electron energy'' in a parameter table.
+%
+% Geometry: alpha is the angle between the electron and laser propagation
+% vectors. alpha = 0 degrees is co-propagating; alpha = 180 degrees is head-on.
+% theta is the observation angle measured from the electron propagation vector.
+%
+% Laser waist: w_0 is the transverse radius at which intensity is 1/e^2 of the
+% on-axis value, unless an explicitly labeled alternative is used.
+%
+% Widths: every temporal, spatial, angular, energy, and spectral width is labeled
+% RMS or FWHM. For a Gaussian profile, FWHM = 2 sqrt(2 ln 2) sigma.
+%
+% Power: peak power is instantaneous pulse power; average power is time-averaged
+% over the stated pulse train or acquisition interval.
+%
+% Spectrum: spectral peak is the location of maximum spectral density; centroid
+% is the first moment over a stated domain. They are not interchangeable.
+%
+% Bandwidth: state the quantity (wavelength, frequency, photon energy), width
+% convention (RMS or FWHM), normalization (for example Delta lambda/lambda),
+% spectral domain, aperture/acceptance, and whether the value is input or output.
+%
+% Polarization: state the electron/laser/EUV polarization basis, propagation
+% direction, handedness convention where applicable, and whether the reported
+% quantity is a Jones vector, Stokes parameters, or degree of polarization.
