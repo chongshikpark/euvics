@@ -46,10 +46,17 @@ MANIFEST
 *.out
 *.toc
 *.bbl
+*.blg
+*.bcf
+*.fdb_latexmk
+*.fls
+*.run.xml
+*.synctex.gz
+*.xdv
+build/
 
 ##########################################
 # Temporary files
 ##########################################
 .*.swp
 tmp
-
