@@ -16,18 +16,19 @@ project-owner approval.
       claims.
 - [x] Record proposed manifest metadata, consumer destinations, exclusions, and
       immutable-lock handoff requirements.
-- [ ] Record scientific reviewer identity, disposition, and review date for the
+- [x] Record scientific reviewer identity, disposition, and review date for the
       exact source hashes.
-- [ ] Record project-owner approval, approval date, license, attribution, public
+- [x] Record project-owner approval, approval date, license, attribution, public
       status, version, and limitations for the exact source hashes.
 - [ ] Commit the approved source and manifest so an immutable reviewed commit SHA
       exists; validate the final allowlist and metadata.
 
 ## Current decision
 
-Task execution authorization is not publication approval. No scientific-review
-record or project-owner approval of the exact Task 1 wording has been supplied.
-The allowlist therefore remains empty and this plan remains active.
+The project owner approved the exact Task 1 wording, review disposition,
+publication metadata, limitations, and narrow source set on 2026-08-03. Three
+exact files are allowlisted. The plan remains active only until the approved
+source and manifest are committed and the immutable handoff SHA is recorded.
 
 ## Evidence
 

@@ -64,7 +64,20 @@ class PublicationContractTests(unittest.TestCase):
     def test_repository_manifest_is_valid_and_deny_by_default(self) -> None:
         manifest = validate_manifest(ROOT / "publication/public-content-v1.json", ROOT)
         self.assertEqual(manifest["default_policy"], "excluded")
-        self.assertEqual(manifest["allowlist"], [])
+        self.assertEqual(
+            [entry["path"] for entry in manifest["allowlist"]],
+            [
+                "cdr/sections/introduction.tex",
+                "cdr/sections/source_overview.tex",
+                "bibliography/references.bib",
+            ],
+        )
+        self.assertTrue(
+            all(entry["approval"]["status"] == "approved" for entry in manifest["allowlist"])
+        )
+        self.assertTrue(
+            all(entry["publication_status"] == "public-draft" for entry in manifest["allowlist"])
+        )
 
     def test_valid_entry_and_metadata_checksum(self) -> None:
         manifest = validate_manifest(self.write(), self.root)

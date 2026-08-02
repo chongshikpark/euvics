@@ -7,7 +7,64 @@
     "source_commit_policy": "locked-by-consuming-website"
   },
   "default_policy": "excluded",
-  "allowlist": [],
+  "allowlist": [
+    {
+      "path": "cdr/sections/introduction.tex",
+      "kind": "latex-source",
+      "title": "EUVICS project introduction and source concept",
+      "version": "physics-overview-v1",
+      "publication_status": "public-draft",
+      "approval": {
+        "status": "approved",
+        "approved_by": "Chong Shik Park, Ph.D. — project owner and scientific reviewer",
+        "approved_on": "2026-08-03"
+      },
+      "license": "MIT License",
+      "attribution": "Copyright (c) 2026 Chong Shik Park, Ph.D.; EUVICS project",
+      "known_limitations": [
+        "Project aims and candidate cases are not demonstrated source performance.",
+        "Application requirements and verification criteria remain unapproved."
+      ]
+    },
+    {
+      "path": "cdr/sections/source_overview.tex",
+      "kind": "latex-source",
+      "title": "EUVICS inverse Compton scattering physics overview",
+      "version": "physics-overview-v1",
+      "publication_status": "public-draft",
+      "approval": {
+        "status": "approved",
+        "approved_by": "Chong Shik Park, Ph.D. — project owner and scientific reviewer",
+        "approved_on": "2026-08-03"
+      },
+      "license": "MIT License",
+      "attribution": "Copyright (c) 2026 Chong Shik Park, Ph.D.; EUVICS project",
+      "known_limitations": [
+        "The documented pyEUVICS yield and spectrum models include stated approximations and are not facility validation.",
+        "The 6.7 nm CAIN comparison has incomplete provenance and remains a known disagreement; no empirical correction is justified.",
+        "The 13.5 nm case remains provisional, and synthetic detector calibration is workflow evidence rather than measured calibration.",
+        "Subsystem design values and allocations remain TBD."
+      ]
+    },
+    {
+      "path": "bibliography/references.bib",
+      "kind": "bibliography",
+      "title": "EUVICS verified bibliography",
+      "version": "physics-overview-v1",
+      "publication_status": "public-draft",
+      "approval": {
+        "status": "approved",
+        "approved_by": "Chong Shik Park, Ph.D. — project owner and scientific reviewer",
+        "approved_on": "2026-08-03"
+      },
+      "license": "MIT License",
+      "attribution": "Copyright (c) 2026 Chong Shik Park, Ph.D.; EUVICS project; individual references retain their cited authorship and publication metadata",
+      "known_limitations": [
+        "The bibliography includes contextual subsystem sources beyond the records used by the public physics overview.",
+        "Cited performance from other facilities is not assigned to EUVICS."
+      ]
+    }
+  ],
   "exclusions": [
     {
       "path_prefix": "archive/",
@@ -62,12 +119,6 @@
       "status": "blocked-permission",
       "owner": "project-owner",
       "decision_needed": "Complete the currently heading-only technical sections; resolve distribution permission for the page-2 layout figure or approve a replacement; then record the exact built PDF version, release date, public license, attribution, known limitations, approver, approval date, and checksum."
-    },
-    {
-      "subject": "Website overview sources",
-      "status": "approval-pending",
-      "owner": "project-owner",
-      "decision_needed": "Approve exact source paths and public license/attribution metadata."
     }
   ]
 }
