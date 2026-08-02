@@ -1,10 +1,164 @@
 \section{Overview of Inverse Compton Scattering EUV Light Source}
 
-\subsection{Physics of Inverse Compton Scattering}
+\subsection{Kinematics and Model Regimes}
 
-\subsection{Accelerator System}
+Let \electronKineticEnergy{} be electron kinetic energy in an explicitly stated
+energy unit. Electron total energy is
+$\electronTotalEnergy=\electronKineticEnergy+\electronRestEnergy=\gamma\electronRestEnergy$,
+with
+\[
+  \gamma=1+\frac{\electronKineticEnergy}{\electronRestEnergy},
+  \qquad
+  \beta=\frac{v}{c}=\frac{\sqrt{(\gamma-1)(\gamma+1)}}{\gamma}.
+\]
+Here $m_e$ is electron rest mass, $c$ is the vacuum speed of light, and $v$ is
+electron speed. An accelerator value such as 3~MeV is interpreted as kinetic
+energy only when labeled as such; it must not be substituted as total energy.
 
-\subsection{Laser System}
+The collision angle \collisionAngle{} is measured between the electron and
+incident-laser propagation vectors. An angle of $0^\circ$ is co-propagating;
+$180^\circ$ is head-on. The observation angle \observationAngle{} is measured from the
+electron propagation direction, so $\observationAngle=0$ is forward observation.
+The current pyEUVICS linear model is coplanar and takes positive
+\observationAngle{} toward the incident laser, making the angle between incident
+and scattered photons $\collisionAngle-\observationAngle$.
+
+For incident photon energy $E_L$ and scattered photon energy $E_s$, the exact
+single-photon linear Compton relation implemented by pyEUVICS 0.5.0 is
+\begin{equation}
+  E_s=E_L
+  \frac{1-\beta\cos\collisionAngle}
+  {1-\beta\cos\observationAngle+
+  \dfrac{E_L}{\gamma\electronRestEnergy}
+  \left[1-\cos(\collisionAngle-\observationAngle)\right]}.
+  \label{eq:exact-linear-ics}
+\end{equation}
+All angles in Eq.~\ref{eq:exact-linear-ics} are evaluated in radians. The
+denominator's final term is photon recoil. Removing it gives the linear Thomson
+approximation. For head-on, on-axis, recoil-free scattering,
+\begin{equation}
+  E_s=\gamma^2(1+\beta)^2E_L\simeq4\gamma^2E_L,
+  \qquad
+  \lambda_s\simeq\frac{\lambda_L}{4\gamma^2},
+  \label{eq:ics-limiting-scaling}
+\end{equation}
+where $\lambda_L$ and $\lambda_s$ are vacuum wavelengths. The final forms use
+the relativistic limit and are scaling relations, not the general EUVICS
+model~\cite{pyEUVICSConventions050,pyEUVICSEquations050}.
+
+The applicable physics regimes are kept separate:
+\begin{itemize}
+  \item \textbf{Linear Thomson:} weak field and recoil-free single-photon
+        scattering. It is useful for limits and checks, not for silently
+        replacing recoil-aware or finite-intensity calculations.
+  \item \textbf{Exact linear Compton:} free-electron, single-photon scattering
+        with recoil, represented by Eq.~\ref{eq:exact-linear-ics} for the current
+        coplanar geometry.
+  \item \textbf{Nonlinear ICS:} finite normalized laser strength $a_0$ modifies
+        electron motion. The current pyEUVICS effective-mass model estimates
+        central harmonic locations with explicit polarization, harmonic, and
+        recoil settings. A calculated harmonic location is not a relative
+        harmonic yield or a complete nonlinear spectrum.
+\end{itemize}
+Pulsed nonlinear Thomson treatments and ponderomotive broadening establish
+additional dependencies~\cite{KrafftEtAl2005NonlinearThomson,HartemannWu2013Brightness};
+they do not supply EUVICS output without matched inputs and assumptions.
+
+\subsection{Controls on Generated and Detected Output}
+
+The central spectral position depends on electron kinetic energy, laser vacuum
+wavelength, collision angle, observation angle, recoil, $a_0$, polarization,
+and harmonic number where applicable. It does not determine photon yield,
+bandwidth, brilliance, or detected signal.
+
+Yield per collision additionally depends on total electron bunch charge and
+laser photon number; transverse and temporal overlap; electron and laser sizes;
+pulse durations; offsets and timing jitter; crossing-angle reduction; and the
+applicable cross section. Average rate or power also depends on repetition rate.
+Accepted and detected quantities further depend on angular and spectral
+acceptance, optical throughput, and wavelength-dependent detector response.
+Generated, accepted, transported, and detected photon number, pulse energy,
+peak power, and average power must remain separately named.
+
+Bandwidth and angular distribution depend on electron kinetic-energy spread,
+emittance and divergence, laser bandwidth and intensity distribution,
+collision-angle and pointing jitter, nonlinear broadening, observation aperture,
+and correlations. Under the pyEUVICS Gaussian conventions, electron spatial,
+energy-spread, and divergence widths are one RMS; laser waist is the transverse
+$1/e^2$ intensity radius; laser duration is intensity FWHM; and laser fractional
+bandwidth is one RMS. Any alternative convention must be labeled and converted
+before comparison. A reported spectral peak, centroid, RMS width, or
+Gaussian-equivalent FWHM must identify its domain, aperture, weighting, and
+statistical definition~\cite{pyEUVICSModels050}.
+
+The current pyEUVICS yield model uses rigid Gaussian beams and a weak-scattering
+luminosity model. Its optional hourglass factor is a screening estimate, its
+angular acceptance is axisymmetric rather than a polarization-resolved
+differential cross-section integration, and combined angular and wavelength
+fractions currently assume independence. The sampled spectrum propagates
+declared spreads and aperture through the central-location model; it is not a
+complete nonlinear radiation spectrum and its samples are not yield weighted.
+These qualifications must accompany results derived from those models.
+
+\subsection{Subsystem and Interaction-Point Interfaces}
+
+The accelerator must produce, accelerate, transport, focus, and diagnose the
+electron bunch. Kinetic energy, bunch charge, normalized emittance, energy
+spread, bunch duration, arrival time, transverse position, and pointing require
+approved definitions and allocations. Transport must deliver the specified
+phase space to the interaction point and carry the residual electron beam to a
+controlled dump. The selected source, radio-frequency, lattice, focusing,
+diagnostic, and dump designs remain TBD. Results from other SRF photoinjectors
+or linacs are contextual evidence, not assigned EUVICS capability~\cite{ArnoldTeichert2011SRFPhotoinjectors,PetrushinaEtAl2020SRFGun,CiovatiEtAl2018LowEnergySRFLinac}.
+
+The laser system must provide a characterized vacuum wavelength, pulse energy,
+intensity-FWHM duration, $1/e^2$ waist, bandwidth, polarization, wavefront,
+pointing, and timing at the interaction point. Peak intensity, pulse-average
+intensity, and repetition-rate-average power are distinct. For the pyEUVICS
+Gaussian pulse model, $a_0$ is derived from the peak electric-field amplitude;
+the supplied pulse energy, waist, duration, wavelength, and declared $a_0$
+therefore require a consistency check. Laser-to-radio-frequency synchronization,
+transport loss, focus characterization, and residual laser handling remain TBD
+design interfaces~\cite{FilippettoEtAl2022UED,pyEUVICSModels050}.
+
+The interaction region must define the collision plane and angle, observation
+axis and aperture, focal positions, timing reference, vacuum boundary, alignment
+tolerances, and overlap diagnostics. A theoretical wavelength remains
+insufficient if the two beams do not overlap with the assumed spatial and
+temporal distributions. Diagnostics must distinguish electron, laser, and EUV
+measurements and preserve calibration, uncertainty, and configuration provenance.
+
+Forward EUV collection must define geometric acceptance before spectral
+selection and transport. Every mirror, aperture, filter, grating, and detector
+requires wavelength-dependent efficiency and provenance; incidence angles must
+state whether measured from the surface normal or as grazing angle from the
+surface plane. Optical loss, detector responsivity, electronics response, and
+acquisition processing must remain distinct stages. A single nondispersive
+photodiode measures integrated signal and cannot directly identify wavelength
+without a dispersive element or independently constrained spectrum
+~\cite{pyEUVICSInstrumentation050}.
+
+\subsection{Role and Validation Boundary of pyEUVICS}
+
+pyEUVICS is the reproducible calculation and validation layer, not an alternate
+set of equations maintained in this document. The locked 0.5.0 documentation
+covers exact linear kinematics, nonlinear effective-mass and harmonic-location
+estimates, seeded spectrum sampling, Gaussian overlap and yield, energy and
+power accounting, optical transport, detector and electronics response,
+end-to-end workflows, and benchmark campaigns. Calculations must record the
+package version, configuration, units, energy and angle conventions, model,
+polarization, harmonic, recoil flag, aperture, random seed and sample count
+where applicable, and input or calibration provenance.
+
+The validation boundary remains explicit. The project-reported 6.7~nm CAIN
+comparison lacks its input deck, code version, aperture, beam distributions, and
+spectral-feature definition; the documented mismatch remains a known
+disagreement and no empirical correction is justified. The 13.5~nm reference
+campaign is provisional because no independent simulation or calibrated
+hardware measurement has been supplied. Synthetic detector calibration verifies
+workflow plumbing only and is not measured detector calibration. Physics review
+must therefore distinguish numerical convergence and target matching from
+independent validation~\cite{pyEUVICSValidation050}.
 
 \blankline
 \blankline

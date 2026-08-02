@@ -2,9 +2,54 @@
 
 \subsection{EUV Light Source Design Criteria}
 
+EUVICS is an effort to design and study a compact \EUV{} source based on
+\ICS{}. The intended technical program is to establish a traceable relationship
+from application requirements through accelerator and laser inputs, interaction
+geometry, photon generation and transport, diagnostics, safety interfaces, and
+verification evidence. It is not yet a statement of demonstrated wavelength,
+flux, bandwidth, brilliance, efficiency, stability, readiness, or experimental
+performance.
+
+Application requirements remain approval pending. Candidate requirements
+SYS-EUV-001 through SYS-EUV-008 identify wavelength, bandwidth, flux, stability,
+polarization, repetition rate, availability, and radiometric traceability, but
+their values and verification criteria remain TBD. The 13.5~nm case is a
+candidate design target, not an approved requirement. Detector and instrument
+calibration must ultimately use traceable, configuration-matched evidence; the
+existence of NIST EUV calibration services does not select or qualify an EUVICS
+detector~\cite{NISTEUVDetectorCalibration}.
+
 \subsection{Accelerator-Based EUV Light Sources}
 
+An inverse Compton source brings a relativistic electron bunch and an incident
+laser pulse into controlled collision. In the electron rest frame, the incident
+photon is Doppler blueshifted; it scatters from the electron and is then boosted
+again when transformed back to the laboratory frame. This two-Doppler-shift
+picture explains the large upshift available from modest incident-photon energy,
+while the exact result follows from energy--momentum conservation. High-energy
+photons are concentrated about the forward electron direction, but no universal
+divergence or collected fraction is assumed: electron phase space,
+polarization, collision geometry, observation aperture, and the selected model
+must be specified~\cite{SunWu2011ComptonSource}.
+
 \subsection{ICS EUV Light Source Design Concept and Performance Goal}
+
+The nominal roadmap inputs are 3~MeV electron kinetic energy and 800~nm
+incident-laser vacuum wavelength. They remain assumed inputs with project-owner
+approval pending. The candidate 6.7~nm and 13.5~nm cases are study targets, not
+measurements or validated facility performance. A versioned model configuration
+must connect any target to electron, laser, geometry, acceptance, optical, and
+detector assumptions before the result can be reviewed.
+
+The source chain is: electron production and acceleration; beam transport,
+focusing, steering, and diagnostics; laser generation, timing, transport,
+polarization control, and focusing; spatiotemporal overlap at the interaction
+point; photon scattering; forward EUV collection and spectral selection;
+optical transport and calibrated diagnostics; and safe transport or disposal of
+the residual electron and laser beams. The interaction point, synchronization,
+crossing geometry, and overlap are system interfaces, not secondary corrections.
+They determine whether single-particle kinematics translates into useful
+accepted and detected output.
 
 \blankline
 \blankline

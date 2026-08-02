@@ -2,32 +2,77 @@
 
 \subsection{EUV Light Source Design Criteria}
 
+EUVICS is an effort to design and study a compact \EUV{} source based on
+\ICS{}. The project aim is to determine whether a coordinated accelerator,
+laser, interaction region, photon-transport system, diagnostics, and controls
+can satisfy an eventually approved application need. This aim is not a claim
+that the source has already achieved a specified wavelength, photon flux,
+bandwidth, brilliance, efficiency, stability, readiness level, or experimental
+result.
+
 The application-level wavelength, bandwidth, flux, stability, polarization,
 repetition-rate, and availability requirements for EUVICS are not yet approved.
 They are tracked as candidate requirements SYS-EUV-001 through SYS-EUV-008 in
 \texttt{tables/requirements\_matrix.csv}. The 13.5~nm case is retained as a
 candidate design target rather than an application requirement. NIST maintains
-calibration capability in the extreme ultraviolet (EUV), illustrating the need
-for traceable radiometry when source performance is eventually
+calibration capability in the extreme ultraviolet, illustrating the need for
+traceable radiometry when source performance is eventually
 verified~\cite{NISTEUVDetectorCalibration}.
 
 \subsection{Accelerator-Based EUV Light Sources}
 
-In a Compton light source, the predicted photon distribution depends on the
-electron-beam, laser-beam, interaction-geometry, and collimation inputs. Analytical
-and Monte Carlo treatments of these dependencies are described by Sun and
-Wu~\cite{SunWu2011ComptonSource}. This source supports the modeling dependency;
-it does not establish EUVICS brightness, bandwidth, compactness, or feasibility.
+In an inverse Compton source, a laser photon collides with a relativistic
+electron. In a useful intuitive picture, the incident photon is Doppler
+blueshifted into the electron rest frame, scatters there, and is boosted again
+when transformed back to the laboratory frame. The higher-energy scattered
+photons are concentrated near the electron's forward direction, but their
+energy and angular distribution depend on the electron beam, laser pulse,
+collision and observation geometry, polarization, recoil and nonlinear model,
+and collection acceptance~\cite{SunWu2011ComptonSource}. Those dependencies do
+not by themselves establish EUVICS performance or feasibility.
+
+The source chain begins with electron production, acceleration, transport, and
+focusing. A synchronized laser pulse is transported and focused to overlap the
+electron bunch at the interaction point. Scattered photons are collected in a
+defined forward acceptance and then spectrally selected, transported, and
+measured, while residual electron and laser beams require controlled transport
+or disposal. The interaction geometry, timing, transverse alignment, and pulse
+overlap determine whether favorable single-particle kinematics produce a useful
+source.
 
 \subsection{ICS EUV Light Source Design Concept and Performance Goal}
 
-The candidate EUVICS concept brings an electron bunch and an incident laser pulse
-to an interaction region and collects scattered radiation within a defined
-acceptance. The nominal roadmap inputs are a 3~MeV electron \emph{kinetic} energy
-and an 800~nm incident-laser wavelength. Output wavelength, flux, bandwidth,
-brilliance, stability, efficiency, and acceptance remain TBD pending an approved
-configuration and versioned pyEUVICS calculation. The 6.7~nm and 13.5~nm values
-are candidate design targets, not predictions or measurements.
+For electron kinetic energy \electronKineticEnergy{}, the Lorentz factor is
+$\gamma=1+\electronKineticEnergy/\electronRestEnergy$. In the weak-field,
+recoil-free, head-on, on-axis limit, the familiar scaling is
+\[
+  E_s\simeq4\gamma^2E_L,
+  \qquad
+  \lambda_s\simeq\frac{\lambda_L}{4\gamma^2},
+\]
+where $E_L$ and $E_s$ are the incident and scattered photon energies and
+$\lambda_L$ and $\lambda_s$ are their vacuum wavelengths. This is an
+orientation-level limiting approximation, not the general EUVICS model. Exact
+linear recoil, nonlinear laser strength, polarization, harmonic number,
+off-axis observation, finite beam distributions, and detector acceptance must
+be treated with their stated assumptions~\cite{pyEUVICSConventions050,pyEUVICSEquations050}.
+
+The nominal roadmap inputs are a 3~MeV electron \emph{kinetic} energy and an
+800~nm incident-laser vacuum wavelength. They are assumed inputs with approval
+pending, not measured operating points. The 6.7~nm and 13.5~nm values are
+candidate design targets, not predictions or measurements. A central-wavelength
+calculation alone does not predict photon yield, bandwidth, brilliance, optical
+throughput, or detected signal.
+
+pyEUVICS is the reproducible calculation and validation layer for the
+project-specific model. Version 0.5.0 at the locked source commit documents
+linear and nonlinear kinematics, approximate spectrum and yield models, optical
+transport, detector response, end-to-end workflows, and benchmark campaigns.
+Its stated limitations remain part of the evidence: nonlinear harmonic
+locations are not relative harmonic yields; the 6.7~nm CAIN comparison has
+incomplete provenance and a known disagreement; the 13.5~nm campaign remains
+provisional; and synthetic detector calibration demonstrates workflow plumbing
+rather than measured calibration~\cite{pyEUVICSModels050,pyEUVICSValidation050}.
 
 \blankline
 \blankline

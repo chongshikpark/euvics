@@ -2,33 +2,52 @@
 
 \subsection{Physics of Inverse Compton Scattering}
 
-Inverse Compton scattering (ICS) describes photon scattering from relativistic
-electrons. In the laboratory frame, the scattered energy and angular distribution
-depend on electron energy, incident-photon energy, collision and observation
-geometry, polarization, and recoil assumptions~\cite{SunWu2011ComptonSource}.
-For intense pulsed fields, nonlinear motion and pulse geometry can modify the
-spectrum; relevant treatments include general nonlinear Thomson geometries and
-ponderomotive broadening~\cite{KrafftEtAl2005NonlinearThomson,HartemannWu2013Brightness}.
-The EUVICS calculation must state which regime and conventions it uses rather
-than combining results from these models without matched assumptions.
+Three regimes must remain distinct. Linear Thomson scattering neglects photon
+recoil and laser-driven effective-mass effects. Exact linear Compton kinematics
+retains recoil for single-photon scattering. Nonlinear ICS accounts for the
+electron motion in a finite-strength laser field and may shift harmonic
+locations or broaden spectral features. Pulsed-field geometry and nonlinear
+motion are treated in the literature~\cite{KrafftEtAl2005NonlinearThomson,HartemannWu2013Brightness};
+results from different regimes cannot be combined without matching their
+assumptions.
+
+Spectral position depends on electron kinetic energy, incident-laser wavelength,
+collision angle, observation angle, recoil, normalized laser strength $a_0$,
+polarization, and harmonic number where applicable. Yield and detected signal
+also depend on bunch charge, laser photon number, spatial and temporal overlap,
+beam sizes and pulse durations, crossing-angle reduction, repetition rate,
+collection aperture, optical throughput, and detector response. Bandwidth and
+angular structure additionally depend on electron energy spread and divergence,
+laser bandwidth and intensity distribution, nonlinear broadening, aperture, and
+correlations. Every reported width must identify its RMS, FWHM, or $1/e^2$
+convention.
 
 \subsection{Accelerator System}
 
-The candidate system boundary includes an electron source, injector, energy-setting
-system, transport, focusing, steering, diagnostics, and dump. The specific
-technology, beam parameters, interfaces, and verification criteria remain TBD.
-Published SRF photoinjector reviews and experiments provide evidence about other
-machines, not EUVICS performance~\cite{ArnoldTeichert2011SRFPhotoinjectors,PetrushinaEtAl2020SRFGun}.
+The candidate accelerator boundary includes an electron source, injector,
+energy-setting system, transport, focusing, steering, diagnostics, and dump. It
+must deliver a characterized electron bunch to the interaction point and safely
+transport the residual beam afterward. Kinetic energy and spread, bunch charge,
+transverse size and divergence, emittance, bunch duration, arrival time,
+position, and pointing all couple to source output. The selected technology,
+numerical allocations, interfaces, and verification criteria remain TBD.
+Published SRF photoinjector reviews and experiments describe other machines,
+not EUVICS performance~\cite{ArnoldTeichert2011SRFPhotoinjectors,PetrushinaEtAl2020SRFGun}.
 
-\subsection{Laser System}
+\subsection{Laser, Interaction Region, and Photon Diagnostics}
 
 The candidate laser boundary includes pulse generation, transport, focusing,
-polarization control, synchronization, diagnostics, and the interaction-region
-interface. Wavelength, pulse energy, duration, waist, bandwidth, polarization,
-timing, and stability values remain TBD except for the roadmap's 800~nm nominal
-assumed input. Laser-to-RF synchronization and time-stamping methods are reviewed
-in the ultrafast-electron literature~\cite{FilippettoEtAl2022UED}; EUVICS-specific
-tolerances require an approved overlap and performance budget.
+polarization control, synchronization, diagnostics, and controlled residual-beam
+transport. The interaction region must establish the collision geometry and
+spatiotemporal overlap while providing electron, laser, and EUV diagnostics.
+Downstream EUV collection, spectral selection, optics, and calibrated detectors
+must preserve a traceable distinction between generated, accepted, transported,
+and detected quantities. Wavelength, pulse energy, intensity-FWHM duration,
+$1/e^2$ waist, one-RMS bandwidth, polarization, timing, stability, acceptance,
+and throughput values remain TBD except for the roadmap's 800~nm nominal
+assumed input. Laser-to-RF synchronization and time-stamping methods are
+reviewed in the ultrafast-electron literature~\cite{FilippettoEtAl2022UED};
+EUVICS-specific tolerances require an approved overlap and performance budget.
 
 \blankline
 \blankline
