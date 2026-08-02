@@ -55,13 +55,13 @@
       "subject": "Proposal PDF",
       "status": "approval-pending",
       "owner": "project-owner",
-      "decision_needed": "Approve an exact built PDF, its revision/date, public license, limitations, and checksum."
+      "decision_needed": "Resolve or accept the documented TBD material, then record the exact built PDF version, release date, public license, attribution, known limitations, approver, approval date, and checksum."
     },
     {
       "subject": "Conceptual Design Report PDF",
       "status": "blocked-permission",
       "owner": "project-owner",
-      "decision_needed": "Resolve the included layout-figure permission or approve a replacement, then approve the exact PDF and metadata."
+      "decision_needed": "Complete the currently heading-only technical sections; resolve distribution permission for the page-2 layout figure or approve a replacement; then record the exact built PDF version, release date, public license, attribution, known limitations, approver, approval date, and checksum."
     },
     {
       "subject": "Website overview sources",
