@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/chongshikpark/euvics/publication/public-content-v1.schema.json",
+  "title": "EUVICS public-content manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "contract_id", "repository", "default_policy", "allowlist", "exclusions", "publication_decisions"],
+  "properties": {
+    "$schema": {"const": "public-content-v1.schema.json"},
+    "schema_version": {"const": "1.0"},
+    "contract_id": {"const": "euvics-public-content-v1"},
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "source_commit_policy"],
+      "properties": {
+        "url": {"const": "https://github.com/chongshikpark/euvics"},
+        "source_commit_policy": {"const": "locked-by-consuming-website"}
+      }
+    },
+    "default_policy": {"const": "excluded"},
+    "allowlist": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/entry"}
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/exclusion"}
+    },
+    "publication_decisions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/decision"}
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "kind", "title", "version", "publication_status", "approval", "license", "attribution", "known_limitations"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["markdown", "latex-source", "bibliography", "metadata", "pdf", "image", "data"]},
+        "title": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "publication_status": {"enum": ["public-draft", "released"]},
+        "approval": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "approved_by", "approved_on"],
+          "properties": {
+            "status": {"const": "approved"},
+            "approved_by": {"type": "string", "minLength": 1},
+            "approved_on": {"type": "string", "format": "date"}
+          }
+        },
+        "license": {"type": "string", "minLength": 1},
+        "attribution": {"type": "string", "minLength": 1},
+        "known_limitations": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "document_date": {"type": "string", "format": "date"}
+      }
+    },
+    "exclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path_prefix", "category", "reason"],
+      "properties": {
+        "path_prefix": {"type": "string", "minLength": 1},
+        "category": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject", "status", "owner", "decision_needed"],
+      "properties": {
+        "subject": {"type": "string", "minLength": 1},
+        "status": {"enum": ["approval-pending", "blocked-permission"]},
+        "owner": {"type": "string", "minLength": 1},
+        "decision_needed": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

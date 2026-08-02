@@ -19,7 +19,10 @@ Run commands from the repository root:
 make proposal       # build/proposal/main.pdf
 make cdr            # build/cdr/main.pdf
 make all            # both documents
-make check          # archive checksums, builds, and unresolved-reference checks
+make publication-check    # validate the deny-by-default public-content contract
+make publication-metadata # emit locked-commit metadata and approved-file checksums
+make test           # run publication-contract tests
+make check          # contract/tests, archive checksums, builds, and reference checks
 make clean          # remove generated LaTeX output
 ```
 
@@ -49,6 +52,26 @@ but it does not approve numerical requirements. Values and statuses marked
 `approval pending` or `TBD` require the owners identified in those files.
 
 All scientific, citation, generated-result, and review rules in `AGENTS.md` apply. Missing facts remain explicit `TBD`s with an owner or question; they must not be filled speculatively.
+
+## Website publication contract
+
+`publication/public-content-v1.json` is the versioned contract consumed by the
+EUVICS website. It is deny-by-default: a file is public website input only when
+an exact repository-relative path appears in `allowlist` with explicit owner
+approval, status, license, attribution, version, and known limitations. A
+public repository path or generated build artifact is not publication approval.
+
+The initial allowlist is empty because no Proposal or CDR PDF has an explicit
+public-release record and the CDR currently includes a figure with unresolved
+distribution permission. The manifest records the decisions needed to admit
+reviewed overview sources and exact document artifacts later. Do not weaken an
+exclusion to admit content; resolve its approval or permission record and make
+a reviewed, file-level manifest change.
+
+`make publication-metadata` writes ignored
+`build/publication-metadata.json`, recording the exact source commit, build
+timestamp, decisions, and SHA-256 checksum for every approved file. The website
+must additionally lock and verify this repository commit before staging.
 
 ## Known build warnings
 

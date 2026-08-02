@@ -1,0 +1,73 @@
+{
+  "$schema": "public-content-v1.schema.json",
+  "schema_version": "1.0",
+  "contract_id": "euvics-public-content-v1",
+  "repository": {
+    "url": "https://github.com/chongshikpark/euvics",
+    "source_commit_policy": "locked-by-consuming-website"
+  },
+  "default_policy": "excluded",
+  "allowlist": [],
+  "exclusions": [
+    {
+      "path_prefix": "archive/",
+      "category": "historical-archive",
+      "reason": "Historical source material and PDFs are retained for internal reference, not public release."
+    },
+    {
+      "path_prefix": "papers/",
+      "category": "historical-working-copy",
+      "reason": "Imported working copies are not authoritative release artifacts."
+    },
+    {
+      "path_prefix": "reviews/",
+      "category": "internal-review",
+      "reason": "Review registers, open decisions, and missing-evidence records are internal working material."
+    },
+    {
+      "path_prefix": "docs/exec-plans/",
+      "category": "internal-planning",
+      "reason": "Execution plans are not website publication content."
+    },
+    {
+      "path_prefix": "docs/document_writing_milestones_20260727/",
+      "category": "internal-planning",
+      "reason": "Historical milestone planning is not website publication content."
+    },
+    {
+      "path_prefix": "proposal/sections/cost_estimate.tex",
+      "category": "confidential-or-unapproved-cost",
+      "reason": "Cost material requires responsible-owner approval before public release."
+    },
+    {
+      "path_prefix": "cdr/sections/cost_estimate.tex",
+      "category": "confidential-or-unapproved-cost",
+      "reason": "Cost material requires responsible-owner approval before public release."
+    },
+    {
+      "path_prefix": "archive/original_20260727/img/ics-layout.png",
+      "category": "restricted-figure",
+      "reason": "Authorship and distribution permission are unresolved in figures/permissions.md."
+    }
+  ],
+  "publication_decisions": [
+    {
+      "subject": "Proposal PDF",
+      "status": "approval-pending",
+      "owner": "project-owner",
+      "decision_needed": "Approve an exact built PDF, its revision/date, public license, limitations, and checksum."
+    },
+    {
+      "subject": "Conceptual Design Report PDF",
+      "status": "blocked-permission",
+      "owner": "project-owner",
+      "decision_needed": "Resolve the included layout-figure permission or approve a replacement, then approve the exact PDF and metadata."
+    },
+    {
+      "subject": "Website overview sources",
+      "status": "approval-pending",
+      "owner": "project-owner",
+      "decision_needed": "Approve exact source paths and public license/attribution metadata."
+    }
+  ]
+}
