@@ -86,20 +86,15 @@ Do not allowlist:
 - any file under `archive/`, `papers/`, `reviews/`, or `docs/exec-plans/`;
 - Proposal/CDR cost sources or any historical/generated artifact.
 
-## Website lock handoff — commit pending
-
-The approved Task 1 wording is committed at
-`0e34bbfb163e94d5c9dcaaa6d79ca8e1a81d6a68`, but that commit predates the
-allowlist approval and must not be placed in `sources.lock.yml`.
-
-After approval and commit, record:
+## Website lock handoff — prepared
 
 - repository: `https://github.com/chongshikpark/euvics`;
-- immutable reviewed commit: **TBD — full 40-character SHA containing both the
-  approved source hashes and manifest entries**;
+- immutable reviewed commit:
+  `f142bd188892f9518a956989ebaf7a42b6930f33`;
 - manifest: `publication/public-content-v1.json`, contract version `1.0`;
 - allowlisted paths: the three exact paths in this checklist;
-- approver and approval date: from the approved manifest;
+- approver: Chong Shik Park, Ph.D., project owner and scientific reviewer;
+- approval date: 2026-08-03;
 - staged consumer paths:
   `content/imported/euvics/cdr/sections/introduction.tex`,
   `content/imported/euvics/cdr/sections/source_overview.tex`, and
